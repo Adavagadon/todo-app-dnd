@@ -1,0 +1,186 @@
+@import "colors";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans";
+  font-weight: 400;
+}
+
+body {
+  font-size: 18px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 800px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3em 0 2em;
+
+  h1 {
+    font-weight: 700;
+    letter-spacing: 10px;
+  }
+
+  button {
+    border: none;
+    height: 25px;
+    width: 25px;
+  }
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  border-radius: 7px;
+  margin: 1em 0;
+  overflow: hidden;
+  box-shadow: 0 10px 10px #00000033;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+
+    &--center {
+      justify-content: center;
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      //margin: 0.5em 0.75em;
+      border-radius: 100px;
+
+      &:checked {
+        background: center no-repeat url("../images/icon-check.svg"), $checkbg;
+      }
+    }
+
+    input[type="text"] {
+      flex: 1;
+      background: transparent;
+      border: none;
+      font-size: 0.9rem;
+
+      &:focus {
+        outline: none;
+        caret-color: lightgray;
+      }
+    }
+
+    p {
+      flex: 1;
+      font-size: 0.9rem;
+    }
+
+    &.completed {
+      p {
+        text-decoration: line-through;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__remove-btn {
+    background: center no-repeat url("../images/icon-cross.svg");
+    width: 25px;
+    height: 25px;
+    border: none;
+  }
+
+  &__last {
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__filter-btn {
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+footer {
+  margin: 2em 0;
+  p {
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+// Themes
+
+.dark {
+  background: top / contain no-repeat url("../images/bg-mobile-dark.jpg"),
+    $very-dark-blue;
+
+  .header {
+    h1 {
+      color: white;
+    }
+
+    button {
+      background: center / 100% url("../images/icon-sun.svg");
+    }
+  }
+
+  .tasks__item {
+    background-color: $very-dark-desaturated-blue;
+
+    &:not(:last-child) {
+      border-bottom: 0.1px solid $very-dark-grayish-blue;
+    }
+
+    input[type="text"] {
+      color: $light-grayish-blue-2;
+      &::placeholder {
+        color: $dark-grayish-blue;
+      }
+    }
+
+    input[type="checkbox"] {
+      border: 1px solid $very-dark-grayish-blue;
+    }
+
+    p {
+      color: $light-grayish-blue-2;
+    }
+  }
+
+  .tasks__last {
+    color: $dark-grayish-blue;
+  }
+
+  button.tasks__last:hover {
+    color: $light-grayish-blue;
+  }
+
+  .tasks__filter-btn {
+    color: $dark-grayish-blue;
+    &.active {
+      color: $brightblue;
+    }
+  }
+
+  footer p {
+    color: $dark-grayish-blue;
+  }
+}
