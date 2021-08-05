@@ -13,8 +13,10 @@ const reducer = (state, action) => {
     return {...state, inputCheck: action.value}
   }
   if(action.type === 'ON_SUBMIT') {
+    let val = state.inputVal.trim();
+    val = val[0].toUpperCase() + val.slice(1);
     const newTasks = 
-    [...state.tasks, {id: state.tasks.length, text: state.inputVal, completed: state.inputCheck}];
+    [...state.tasks, {id: 'id' + state.tasks.length, text: val, completed: state.inputCheck, anim: true}];
     return {...state, tasks: newTasks, inputVal: '', inputCheck: false}
   }
   if(action.type === 'ON_CHECK') {
@@ -24,6 +26,23 @@ const reducer = (state, action) => {
   }
   if(action.type === 'REMOVE_TASK') {
     const newTasks = state.tasks.filter(task => task.id !== action.index);
+    return {...state, tasks: newTasks}
+  }
+  if(action.type === 'CLEAR_COMPLETED') {
+    const newTasks = state.tasks.filter(task => !task.completed);
+    return {...state, tasks: newTasks}
+  }
+  if(action.type === 'FILTER') {
+    const btns = document.querySelectorAll('.tasks__filter-btn');
+    for(let btn of btns) {
+      btn.classList.remove('active');
+    }
+    action.btn.classList.add('active');
+    return {...state, filter: action.btn.value};
+  }
+  if(action.type === 'ON_DRAG_END') {
+    let newTasks = action.newTasks;
+    newTasks.map(task => task.anim = false);
     return {...state, tasks: newTasks}
   }
   return state;

@@ -23,7 +23,12 @@
 
 body {
   font-size: 18px;
-  transition: 0.3s;
+  transition: 0.2s;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 button:hover {
@@ -74,6 +79,10 @@ button:hover {
 
     &--center {
       justify-content: center;
+    }
+
+    &.no-animation {
+      animation: none;
     }
 
     input[type="checkbox"] {
@@ -163,10 +172,6 @@ footer {
   .tasks__item {
     background-color: $very-dark-desaturated-blue;
 
-    &:not(:first-child) {
-      border-bottom: 0.1px solid $very-dark-grayish-blue;
-    }
-
     input[type="text"] {
       color: $light-grayish-blue-2;
       &::placeholder {
@@ -181,6 +186,10 @@ footer {
     p {
       color: $light-grayish-blue-2;
     }
+  }
+
+  ul > .tasks__item {
+    border-bottom: 0.1px solid $very-dark-grayish-blue;
   }
 
   .tasks__last {
@@ -221,10 +230,6 @@ footer {
   .tasks__item {
     background-color: $very-light-gray;
 
-    &:not(:first-child) {
-      border-bottom: 0.1px solid $dark-grayish-blue;
-    }
-
     input[type="text"] {
       color: $very-dark-grayish-blue-3;
       &::placeholder {
@@ -239,6 +244,10 @@ footer {
     p {
       color: $very-dark-grayish-blue-3;
     }
+  }
+
+  ul > .tasks__item {
+    border-bottom: 0.1px solid $light-grayish-blue-3;
   }
 
   .tasks__last {

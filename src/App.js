@@ -6,6 +6,7 @@ const initialState = {
   theme: 'dark',
   inputVal: '',
   inputCheck: false,
+  filter: 'all',
   tasks: []
 }
 
