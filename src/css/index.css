@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+@keyframes new-item {
+  from {
+    max-height: 0;
+    transform: translateX(-150%);
+  }
+  50% {
+    max-height: 200px;
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -8,6 +21,7 @@
 
 body {
   font-size: 18px;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -36,11 +50,12 @@ button:hover {
   border: none;
   height: 25px;
   width: 25px;
+  transition: 0.2s;
 }
 
 .tasks {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   border-radius: 7px;
   margin: 1em 0;
   overflow: hidden;
@@ -53,6 +68,8 @@ button:hover {
   align-items: center;
   gap: 1em;
   padding: 1em;
+  transform-origin: left;
+  animation: 0.3s ease-in 0s 1 new-item;
 }
 
 .tasks__item--center {
@@ -123,7 +140,7 @@ footer p {
 }
 
 .dark {
-  background: top/contain no-repeat url("../images/bg-mobile-dark.jpg"), #161722;
+  background: center -10%/100% no-repeat url("../images/bg-mobile-dark.jpg"), #161722;
 }
 
 .dark .header h1 {
@@ -132,13 +149,14 @@ footer p {
 
 .dark .header button {
   background: center/100% url("../images/icon-sun.svg");
+  transform: rotate(0deg);
 }
 
 .dark .tasks__item {
   background-color: #25273c;
 }
 
-.dark .tasks__item:not(:last-child) {
+.dark .tasks__item:not(:first-child) {
   border-bottom: 0.1px solid #4d5066;
 }
 
@@ -176,5 +194,62 @@ footer p {
 
 .dark footer p {
   color: #777a92;
+}
+
+.light {
+  background: center -10%/100% no-repeat url("../images/bg-mobile-light.jpg"), #e4e5f1;
+}
+
+.light .header h1 {
+  color: white;
+}
+
+.light .header button {
+  background: center/100% url("../images/icon-moon.svg");
+  transform: rotate(-720deg);
+}
+
+.light .tasks__item {
+  background-color: #fafafa;
+}
+
+.light .tasks__item:not(:first-child) {
+  border-bottom: 0.1px solid #777a92;
+}
+
+.light .tasks__item input[type="text"] {
+  color: #484b6a;
+}
+
+.light .tasks__item input[type="text"]::placeholder {
+  color: #9394a5;
+}
+
+.light .tasks__item input[type="checkbox"] {
+  border: 1px solid #9394a5;
+}
+
+.light .tasks__item p {
+  color: #484b6a;
+}
+
+.light .tasks__last {
+  color: #9394a5;
+}
+
+.light button.tasks__last:hover {
+  color: #484b6a;
+}
+
+.light .tasks__filter-btn {
+  color: #9394a5;
+}
+
+.light .tasks__filter-btn.active {
+  color: #3a7bfd;
+}
+
+.light footer p {
+  color: #9394a5;
 }
 /*# sourceMappingURL=index.css.map */
