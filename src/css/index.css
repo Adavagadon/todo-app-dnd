@@ -22,6 +22,7 @@
 body {
   font-size: 18px;
   transition: 0.2s;
+  will-change: background;
 }
 
 ul {
@@ -60,7 +61,7 @@ button:hover {
 
 .tasks {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   border-radius: 7px;
   margin: 1em 0;
   overflow: hidden;
@@ -149,7 +150,7 @@ footer p {
 }
 
 .dark {
-  background: center -10%/100% no-repeat url("../images/bg-mobile-dark.jpg"), #161722;
+  background: center calc(-30vw + 100px)/100% no-repeat url("../images/bg-mobile-dark.jpg"), #161722;
 }
 
 .dark .header h1 {
@@ -206,7 +207,7 @@ footer p {
 }
 
 .light {
-  background: center -10%/100% no-repeat url("../images/bg-mobile-light.jpg"), #e4e5f1;
+  background: center calc(-30vw + 100px) no-repeat url("../images/bg-mobile-light.jpg"), #e4e5f1;
 }
 
 .light .header h1 {
@@ -260,5 +261,20 @@ footer p {
 
 .light footer p {
   color: #9394a5;
+}
+
+@media (min-width: 900px) {
+  .dark {
+    background: center calc(-5vw + 25px)/100% no-repeat url("../images/bg-desktop-dark.jpg"), #161722;
+  }
+  .light {
+    background: center calc(-5vw + 25px)/100% no-repeat url("../images/bg-desktop-light.jpg"), #e4e5f1;
+  }
+  .tasks__item p,
+  .tasks__item input[type="text"],
+  .tasks__item span,
+  .tasks__item button {
+    font-size: 1.1rem;
+  }
 }
 /*# sourceMappingURL=index.css.map */

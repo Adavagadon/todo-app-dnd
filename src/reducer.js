@@ -16,12 +16,12 @@ const reducer = (state, action) => {
     let val = state.inputVal.trim();
     val = val[0].toUpperCase() + val.slice(1);
     const newTasks = 
-    [...state.tasks, {id: 'id' + state.tasks.length, text: val, completed: state.inputCheck, anim: true}];
+    [{id: 'id' + state.tasks.length, text: val, completed: state.inputCheck, anim: true}, ...state.tasks];
     return {...state, tasks: newTasks, inputVal: '', inputCheck: false}
   }
   if(action.type === 'ON_CHECK') {
     let newTasks = state.tasks;
-    newTasks[newTasks.findIndex(task => task.text === action.name)].completed = action.value;
+    newTasks[newTasks.findIndex(task => task.id === action.name)].completed = action.value;
     return {...state, tasks: newTasks}
   }
   if(action.type === 'REMOVE_TASK') {

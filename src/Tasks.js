@@ -46,10 +46,6 @@ const Tasks = ({state, dispatch}) => {
             </div>
           </form>
           <section className="tasks">
-            <div className="tasks__item no-animation">
-              <span className="tasks__last">{tasks.length > 0 ? `${tasks.filter(task => !task.completed).length} items left` : 'You have no tasks'}</span>
-              {tasks.length > 0 ? <button className="tasks__last" onClick={handleClearCompleted}>Clear Completed</button> : ''}
-            </div>
             <DragDropContext onDragEnd={handleOnDragEnd}>
               <Droppable droppableId="tasks">
                 {(provided) => (
@@ -64,6 +60,10 @@ const Tasks = ({state, dispatch}) => {
                 )}
               </Droppable>
             </DragDropContext>
+            <div className="tasks__item no-animation">
+              <span className="tasks__last">{tasks.length > 0 ? `${tasks.filter(task => !task.completed).length} items left` : 'You have no tasks'}</span>
+              {tasks.length > 0 ? <button className="tasks__last" onClick={handleClearCompleted}>Clear Completed</button> : ''}
+            </div>
           </section>
 
           <section className="tasks">
@@ -95,7 +95,7 @@ const Task = ({id, text, completed, anim, index, dispatch}) => {
     <Draggable draggableId={id} index={index}>
       {(provided) => (
         <li className={(completed ? "tasks__item completed" : "tasks__item") + (anim ? '' : ' no-animation')} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-          <input type="checkbox" name={text} checked={completed} onChange={handleCheckChange}/>
+          <input type="checkbox" name={id} checked={completed} onChange={handleCheckChange}/>
           <p>{text}</p>
           <button className="tasks__remove-btn" onClick={() => removeTask(id)}></button>
         </li>
